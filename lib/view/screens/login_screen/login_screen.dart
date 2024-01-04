@@ -3,6 +3,7 @@ import 'package:stacklab_e/view/common_widgets/custom_button.dart';
 import 'package:stacklab_e/view/common_widgets/custom_textfield.dart';
 import 'package:stacklab_e/const/string_const.dart';
 import 'package:stacklab_e/view/screens/home_screen/home_screen.dart';
+import 'package:stacklab_e/view/screens/otp_screen/otp_screen.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -42,7 +43,7 @@ class LoginScreen extends StatelessWidget {
                     title: 'Log In',
                     onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => const HomeScreen(),
+                        builder: (context) => const MyOTP(),
                         ));
                     },
                     )
