@@ -1,0 +1,9 @@
+const demo = "STACKLAB-DEMO";
+const phone = "Number";
+const phoneHint = "+91-90909090990";
+const password = "Password";
+const passwordHint = "*******";
+const forgetPassword = "Forget Password";
+const login  = "Log In";
+const signUp = "Sign Up";
+const createNewAcc = "or, create a new account";
