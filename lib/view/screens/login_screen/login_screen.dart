@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:stacklab_e/view/common_widgets/custom_button.dart';
 import 'package:stacklab_e/view/common_widgets/custom_textfield.dart';
@@ -6,9 +7,19 @@ import 'package:stacklab_e/view/screens/home_screen/home_screen.dart';
 import 'package:stacklab_e/view/screens/otp_screen/otp_screen.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
+  static String verify = "";
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  var phone = "";
+  String countryCode = '';
+  // String password = 'test@1234';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +35,14 @@ class LoginScreen extends StatelessWidget {
               const SizedBox(height: 15,),
               Column(
                 children: [
-                  customTextField(hint: phoneHint, title: phone),
+                  customTextField(
+                    keyboardType:  TextInputType.phone,
+                    hint: phoneHint, 
+                    title: phone,
+                    onChanged: (value){
+                      phone = value;
+                    }
+                    ),
                   const SizedBox(
                     height: 15,
                   ),
@@ -41,10 +59,23 @@ class LoginScreen extends StatelessWidget {
                   ),
                   customButton(
                     title: 'Log In',
-                    onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(
+                    onPressed: () async{
+                      await FirebaseAuth.instance.verifyPhoneNumber(
+                        phoneNumber: "${countryCode + phone}",
+                        verificationCompleted: 
+                          (PhoneAuthCredential credential){
+                          }, 
+                        verificationFailed: 
+                          (FirebaseException e) {}, 
+                        codeSent: 
+                          (String verificationId, int? resendToken) {
+                            LoginScreen.verify = verificationId;
+                            Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => const MyOTP(),
                         ));
+                          }, 
+                        codeAutoRetrievalTimeout: (String verificationId) {}
+                        );
                     },
                     )
                 ],

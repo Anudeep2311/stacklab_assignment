@@ -5,6 +5,8 @@ import 'package:velocity_x/velocity_x.dart';
 Widget customTextField ({
   String? title,
   String? hint,
+  void Function(String)? onChanged,
+  TextInputType? keyboardType,
   controller
 }) {
   return Column(
@@ -13,6 +15,8 @@ Widget customTextField ({
       title!.text.color(Colors.blueAccent.shade200).size(16).make(),
       const SizedBox(height: 5,),
       TextFormField(
+        keyboardType:keyboardType ,
+        onChanged: onChanged,
         controller: controller,
         decoration:  InputDecoration(
           hintStyle: const TextStyle(

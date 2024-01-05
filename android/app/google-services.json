@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "539733835381",
+    "project_id": "stacklab-d991a",
+    "storage_bucket": "stacklab-d991a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:539733835381:android:49e19537b883d364cdc23c",
+        "android_client_info": {
+          "package_name": "com.example.stacklab_e"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDmrFql0-efXP283JmJ7EAXA09jVmG_6ck"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
